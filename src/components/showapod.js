@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import YouTube from 'react-youtube';
 
 
 class ShowApod extends Component {
-    apiKey = 'tqz634Z1x0LiJzjbhSyUoExrZaGKLM0MG1VnROR6'
     baseURL = '';
-    // apiKey = 'NNKOjkoul8n1CH18TWA9gwngW1s1SmjESPjNoUFo'
+    apiKey = 'NNKOjkoul8n1CH18TWA9gwngW1s1SmjESPjNoUFo'
     constructor(props) {
         super(props);
         this.state = { data: {}, selectedDate: new Date() };
@@ -27,7 +25,17 @@ class ShowApod extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-
+        let myDate = new Date();
+        if(this.props.date === undefined) {
+        }else {
+            myDate = this.props.date;
+        }
+        const myURL = this.baseURL 
+        + '&date=' + myDate.toISOString().split('T')[0];
+        console.log(myURL);
+        console.log('URL: ' + myURL);
+        fetch(myURL).then(response => response.json())
+        .then(data => this.setState({data: data}));
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -44,17 +52,6 @@ class ShowApod extends Component {
 
     componentWillUnmount() {
 
-    }
-
-    handleChange(event){
-        this.setState({selectedDate: event});
-        console.log('Event: ' + event);
-        const myURL = this.baseURL 
-        + '&date=' + event.toISOString().split('T')[0];
-        console.log(myURL);
-        console.log('URL: ' + myURL);
-        fetch(myURL).then(response => response.json())
-        .then(data => this.setState({data: data}));
     }
 
     youtube_parser(url){
@@ -79,14 +76,6 @@ class ShowApod extends Component {
         return (
 
             <div className="container">
-
-                <div className="container-fluid text-center">
-                    <DatePicker
-                        selected={this.state.selectedDate}
-                        onChange={(e)=>this.handleChange(e)}
-                    />
-
-                </div>
 
                 <div className="jumbotron">
                     <div className="container">

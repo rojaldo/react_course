@@ -4,6 +4,8 @@ import Calculator from './calculator';
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 import ShowApod from './showapod';
+import Apod from './apod';
+import Beers from './beers';
 
 
 class Main extends Component {
@@ -43,12 +45,15 @@ class Main extends Component {
     render() {
         return (
             <div class="container">
-                <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
-                    <Tab eventKey="home" title="Calculator">
+                <Tabs defaultActiveKey="beers" id="uncontrolled-tab-example">
+                    <Tab eventKey="calculator" title="Calculator">
                         <Calculator />
                     </Tab>
-                    <Tab eventKey="profile" title="Apod">
-                        <ShowApod></ShowApod>
+                    <Tab eventKey="apod" title="Apod">
+                        <Apod></Apod>
+                    </Tab>
+                    <Tab eventKey="beers" title="Beers">
+                        <Beers></Beers>
                     </Tab>
                 </Tabs>
             </div>
