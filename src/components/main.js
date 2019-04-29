@@ -6,6 +6,7 @@ import Tab from 'react-bootstrap/Tab'
 import ShowApod from './showapod';
 import Apod from './apod';
 import Beers from './beers';
+import TypeAhead from './typeahead';
 
 
 class Main extends Component {
@@ -45,7 +46,7 @@ class Main extends Component {
     render() {
         return (
             <div class="container">
-                <Tabs defaultActiveKey="beers" id="uncontrolled-tab-example">
+                <Tabs defaultActiveKey="typeahead" id="uncontrolled-tab-example">
                     <Tab eventKey="calculator" title="Calculator">
                         <Calculator />
                     </Tab>
@@ -54,6 +55,9 @@ class Main extends Component {
                     </Tab>
                     <Tab eventKey="beers" title="Beers">
                         <Beers></Beers>
+                    </Tab>
+                    <Tab eventKey="typeahead" title="TypeAhead">
+                        <TypeAhead></TypeAhead>
                     </Tab>
                 </Tabs>
             </div>
