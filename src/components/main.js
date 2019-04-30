@@ -7,6 +7,7 @@ import ShowApod from './showapod';
 import Apod from './apod';
 import Beers from './beers';
 import TypeAhead from './typeahead';
+import Trivial from './trivial';
 
 
 class Main extends Component {
@@ -46,7 +47,7 @@ class Main extends Component {
     render() {
         return (
             <div class="container">
-                <Tabs defaultActiveKey="typeahead" id="uncontrolled-tab-example">
+                <Tabs defaultActiveKey="trivial" id="uncontrolled-tab-example">
                     <Tab eventKey="calculator" title="Calculator">
                         <Calculator />
                     </Tab>
@@ -58,6 +59,9 @@ class Main extends Component {
                     </Tab>
                     <Tab eventKey="typeahead" title="TypeAhead">
                         <TypeAhead></TypeAhead>
+                    </Tab>
+                    <Tab eventKey="trivial" title="Trivial">
+                        <Trivial></Trivial>
                     </Tab>
                 </Tabs>
             </div>
