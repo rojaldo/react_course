@@ -23,8 +23,7 @@ class Trivial extends Component {
         data.results.forEach(element => {
             const myCard = new Card(element);    
             cardArray = [...cardArray, myCard];
-        });
-        
+        });  
         this.setState({ data: data, cards: cardArray });
     }
 
@@ -53,7 +52,6 @@ class Trivial extends Component {
     }
 
     render() {
-
         const cards = this.state.cards.map((card, i) =>
         <TrivialCard card={card} key={i}></TrivialCard>
         )

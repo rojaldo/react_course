@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class TrivialCard extends Component {
+
     constructor(props) {
         super(props);
-
+        this.state = {myCard: this.props.card};
     }
 
     componentWillMount() {
@@ -16,6 +17,7 @@ class TrivialCard extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
+        this.myCard = nextProps;
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -35,18 +37,30 @@ class TrivialCard extends Component {
 
     }
 
+    handleClick(index){
+        let card = this.state.myCard;
+        card.responded = true;
+        this.setState({myCard: card});
+        
+    }
+
     render() {
-        const answers = this.props.card.answers.map((answer,i)=>
-        <button type="button" className="btn btn-block btn-primary" key={i}>{answer}</button>
-        );
+        let answers = <div></div>;
+        if(this.props.card.responded === false){
+            answers = this.props.card.answers.map((answer,i)=>
+            <button type="button" className="btn btn-block btn-primary" key={i} onClick={()=>this.handleClick(i)}>{answer}</button>
+            );    
+        }else {
+            answers = this.props.card.answers.map((answer,i)=>
+            <button type="button" className="btn btn-block btn-secondary" key={i} disabled>{answer}</button>
+            );
+        }
         return (
             <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4">
             <div className="card">
                 <div className="card-body">
-                
                     <h4 className="card-title">{this.props.card.question}</h4>
                     {answers}
-
                 </div>
             </div>
         </div>

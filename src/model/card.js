@@ -5,7 +5,9 @@ export default class Card {
     category = '';
     difficulty = '';
     type = '';
-    
+    responded = false;
+    indexResponse = -1;
+
     constructor(json){
         this.question = json.question;
         this.correctAnswer = json.correct_answer;
