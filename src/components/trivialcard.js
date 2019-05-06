@@ -40,7 +40,22 @@ class TrivialCard extends Component {
     handleClick(index){
         let card = this.state.myCard;
         card.responded = true;
+        card.indexResponse = index;
+        if(card.answers[index] === card.correctAnswer){
+            card.rightAnswered = true;
+        }
         this.setState({myCard: card});
+        
+    }
+
+    selectClass(index){
+        if(this.state.myCard.indexResponse === index && !this.state.myCard.rightAnswered){
+            return "btn btn-block btn-danger";    
+        } else if(this.state.myCard.answers[index] === this.state.myCard.correctAnswer){
+            return "btn btn-block btn-success";    
+        }else {
+            return "btn btn-block btn-secondary";
+        }
         
     }
 
@@ -52,7 +67,7 @@ class TrivialCard extends Component {
             );    
         }else {
             answers = this.props.card.answers.map((answer,i)=>
-            <button type="button" className="btn btn-block btn-secondary" key={i} disabled>{answer}</button>
+            <button type="button" className={this.selectClass(i)} key={i} disabled>{answer}</button>
             );
         }
         return (

@@ -1,11 +1,13 @@
 export default class Card {
 
     question = '';
+    correctAnswer = '';
     answers = [];
     category = '';
     difficulty = '';
     type = '';
     responded = false;
+    rightAnswered = false;
     indexResponse = -1;
 
     constructor(json){
