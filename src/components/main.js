@@ -8,6 +8,7 @@ import Apod from './apod';
 import Beers from './beers';
 import TypeAhead from './typeahead';
 import Trivial from './trivial';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 
 class Main extends Component {
@@ -46,24 +47,36 @@ class Main extends Component {
 
     render() {
         return (
-            <div class="container">
-                <Tabs defaultActiveKey="trivial" id="uncontrolled-tab-example">
-                    <Tab eventKey="calculator" title="Calculator">
-                        <Calculator />
-                    </Tab>
-                    <Tab eventKey="apod" title="Apod">
-                        <Apod></Apod>
-                    </Tab>
-                    <Tab eventKey="beers" title="Beers">
-                        <Beers></Beers>
-                    </Tab>
-                    <Tab eventKey="typeahead" title="TypeAhead">
-                        <TypeAhead></TypeAhead>
-                    </Tab>
-                    <Tab eventKey="trivial" title="Trivial">
-                        <Trivial></Trivial>
-                    </Tab>
-                </Tabs>
+            <div>
+                <Router>
+                    <div>
+                        <nav>
+                            <ul>
+                                <li>
+                                    <Link to="/calculator">Calculator</Link>
+                                </li>
+                                <li>
+                                    <Link to="/beers/">Beers</Link>
+                                </li>
+                                <li>
+                                    <Link to="/apod/">Apod</Link>
+                                </li>
+                                <li>
+                                    <Link to="/typeahead/">Type Ahead</Link>
+                                </li>
+                                <li>
+                                    <Link to="/trivial/">Trivial</Link>
+                                </li>
+                            </ul>
+                        </nav>
+
+                        <Route path="/calculator" exact component={Calculator} />
+                        <Route path="/beers/" component={Beers} />
+                        <Route path="/apod/" component={Apod} />
+                        <Route path="/typeahead/" component={TypeAhead} />
+                        <Route path="/trivial/" component={Trivial} />
+                    </div>
+                </Router>
             </div>
         );
     }

@@ -45,7 +45,6 @@ class TrivialCard extends Component {
             card.rightAnswered = true;
         }
         this.setState({myCard: card});
-        
     }
 
     selectClass(index){
